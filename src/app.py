@@ -70,7 +70,7 @@ fig = px.choropleth_mapbox(df,
                            locations='canton',
                            featureidkey="properties.kan_name",
                            color="energy_source_level_2",
-                           
+
                            labels={'energy_source_level_2': "Renewal Energy Source"},
                            title='Major Renewal Energy Source by Canton',
                            center={'lat':47.3769, 'lon':8.5417},
@@ -92,6 +92,7 @@ fig_scattermap = px.scatter_mapbox(df,
                        lon= 'lon',
                        labels={'energy_source_level_2':'Renewal Energy Source'},
                        zoom=7,
+                       size='electrical_capacity',
                        height=1000)
 
 fig_scattermap.update_layout(mapbox_style="open-street-map")
