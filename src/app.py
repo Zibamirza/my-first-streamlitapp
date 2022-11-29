@@ -15,7 +15,8 @@ def load_data(path):
     df = pd.read_csv(path)
     return df
 
-df_raw=load_data(path=r".\data\raw\renewable_power_plants_CH.csv")
+#df_raw=load_data(path=r".\data\raw\renewable_power_plants_CH.csv")
+df_raw=load_data(path=r"./data/raw/renewable_power_plants_CH.csv")
 df=deepcopy(df_raw)
 
 # Add title and header
@@ -56,8 +57,11 @@ show_analysis=right_column.radio(label='Show number of plant and plant capacity 
 
 
 #importing geojson
-with open(r".\data\raw\georef-switzerland-kanton.geojson") as response:
+#with open(r".\data\raw\georef-switzerland-kanton.geojson") as response:
+#    swiss_cantons = json.load(response)
+with open("./data/raw/georef-switzerland-kanton.geojson") as response:
     swiss_cantons = json.load(response)
+
 
 
 #plotting first map
