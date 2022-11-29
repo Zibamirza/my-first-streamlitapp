@@ -46,10 +46,10 @@ df['canton']= df['canton'].map(cantons_dict)
 #inserting the 3 radio buttons
 
 show_map = left_column.radio(
-    label='Major renewable energy source by Canton', options=['No', 'Yes'])
+    label='Show major renewable energy sources by Canton', options=['No', 'Yes'])
 
 
-show_whole_swiss= middle_column.radio(label='Renewable energy map by source', options=['No', 'Yes'])
+show_whole_swiss= middle_column.radio(label='Show location of renewal energy plants', options=['No', 'Yes'])
 
 
 show_analysis=right_column.radio(label='Show number of plant and plant capacity analysis by Energy Type',
@@ -70,6 +70,9 @@ fig = px.choropleth_mapbox(df,
                            locations='canton',
                            featureidkey="properties.kan_name",
                            color="energy_source_level_2",
+                           hover_data='energy_source_level_2',
+                           labels={'energy_source_level_2': "Renewal Energy Source"},
+                           title='Major Renewal Energy Source by Canton',
                            center={'lat':47.3769, 'lon':8.5417},
                            mapbox_style="carto-positron",
                            zoom=6)
@@ -87,8 +90,9 @@ fig_scattermap = px.scatter_mapbox(df,
                        color="energy_source_level_2", title="Location of energy source",
                        lat = 'lat',
                        lon= 'lon',
+                       labels={'energy_source_level_2':'Renewal Energy Source'},
                        zoom=7,
-                       height=800)
+                       height=1000)
 
 fig_scattermap.update_layout(mapbox_style="open-street-map")
 
